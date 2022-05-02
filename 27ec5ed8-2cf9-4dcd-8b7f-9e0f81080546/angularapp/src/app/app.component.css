@@ -1,0 +1,30 @@
+/* :host {
+    display: block;
+    background-image: url('../assets/img/BG.jfif');
+    background-repeat: no-repeat;
+    background-size: cover;
+} */
+.navbar{
+    opacity: 0.9;
+    background: #f38181
+    /* background-color: #002366; */
+}
+.navbar-brand{
+    /* color: rgb(225, 213, 202); */
+    color: white;
+    font-size: 35px;
+    padding: 5px;
+    font-weight: bolder;
+}
+
+.btn{
+    padding-left: 10px;
+    /* margin: 10px; */
+    margin-left: 20px;
+}
+ .btn:hover {
+    background-color: #95e1d3
+}
+.fa-person-breastfeeding{
+    color: white;
+}

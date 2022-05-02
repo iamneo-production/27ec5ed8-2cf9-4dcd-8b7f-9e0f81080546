@@ -1,0 +1,134 @@
+<div class="container" id="contain">
+  <div class="row">
+      <div *ngIf="!isAdminLoggedin">
+      <ng-container *ngFor="let jb of jobCard">
+        
+          <div class="card text-center  col-md-3"  style="width: 25rem;">
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item"><b>Job Description</b> <br>
+              {{jb.job_description}}
+          </li>
+            <li class="list-group-item"><b>Experience</b> <br>
+              {{jb.experience}}
+          </li>
+              <li class="list-group-item"><b>Wages</b> <br>
+                 {{jb. wage_per_day}}
+              </li>
+            <li class="list-group-item"><b>From date:</b> {{jb.from_date}} <br>
+                  <b>To date:</b> {{jb.to_date}}</li>
+              <li class="list-group-item"><b>Address</b> <br>
+                {{jb. address}}
+          </li>
+            <li class="list-group-item"><b>Phone number</b> <br>
+              {{jb.phone_number}}
+          </li>
+          </ul>
+          <div class="card-body">
+              <button  id="apply" (click)="onapply(jb.id)"  data-bs-toggle="modal" data-bs-target="#exampleModal">
+                  Apply
+              </button>
+          </div>
+      </div>
+      </ng-container>
+      </div>
+      </div>
+    </div>
+      <div *ngIf="isAdminLoggedin">
+      <div class="container" id="contain">
+        <div class="row">
+            
+          <ng-container *ngFor="let jb of jobCard">
+        
+            <div class="card text-center  col-md-3"  style="width: 25rem;">
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item"><b>Job Description</b> <br>
+                {{jb.job_description}}
+            </li>
+              <li class="list-group-item"><b>Experience</b> <br>
+                {{jb.experience}}
+            </li>
+                <li class="list-group-item"><b>Wages</b> <br>
+                   {{jb. wage_per_day}}
+                </li>
+              <li class="list-group-item"><b>From date:</b> {{jb.from_date}} <br>
+                    <b>To date:</b> {{jb.to_date}}</li>
+                <li class="list-group-item"><b>Address</b> <br>
+                  {{jb. address}}
+            </li>
+              <li class="list-group-item"><b>Phone number</b> <br>
+                {{jb.phone_number}}
+            </li>
+            </ul>
+            <div class="card-body">
+                <button  id="apply" (click)="onapply(jb.id)"  data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    Edit
+                </button>
+            </div>
+        </div>
+        </ng-container>
+      </div>
+          </div>
+          </div>
+
+
+<!-- update form -->
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    </div>
+    <div class="modal-body">
+      <form  name="form" #editform="ngForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label for="exampleInputEmail1">Full Name</label>
+          <input type="text"  [(ngModel)]="application1.name" #name="ngModel" [ngModelOptions]="{standalone: true}"  class="form-control" id="fullName"  placeholder="Enter full Name" >
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">Enter Your Address</label>
+          <input type="text" [(ngModel)]="application1.address" #address="ngModel" [ngModelOptions]="{standalone: true}"  class="form-control" id="exampleInputDescription"  placeholder="Enter Address">
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">Enter Experience</label>
+          <input type="text" [(ngModel)]="application1.experience" #experience="ngModel" [ngModelOptions]="{standalone: true}" class="form-control" id="exampleInputExperience"  placeholder="Enter experience">
+        
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">Enter your DOB</label>
+          <input type="date" [(ngModel)]="application1.dob" #dob="ngModel" [ngModelOptions]="{standalone: true}" class="form-control" id="exampleInputWage"  placeholder="Enter DOB">
+        
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">Enter your age</label>
+          <input type="number" [(ngModel)]="application1.age" #age="ngModel" [ngModelOptions]="{standalone: true}" class="form-control" id="exampleInputFromDate" placeholder="Enter from date">
+    
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1">Enter your Aadhar</label>
+          <input type="number" [(ngModel)]="application1.verification_id" #verification_id="ngModel" [ngModelOptions]="{standalone: true}"  class="form-control" id="exampleInputToDate" placeholder="enter Aadhar id">
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1">Enter Your Nationality</label>
+          <input type="text" [(ngModel)]="application1.nationality" #nationality="ngModel" [ngModelOptions]="{standalone: true}"  class="form-control" id="exampleInputAddress" placeholder="Enter Nationality">
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1">Enter phone number</label>
+          <input type="text" [(ngModel)]="application1.phone_number" #phone_number="ngModel" [ngModelOptions]="{standalone: true}"   class="form-control" id="exampleInputPhoneNumber" placeholder="Enter phone number">
+        </div>
+        <!-- <button  type="submit" class="btn btn-primary">Submit</button> -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+          <button type="submit"  class="btn btn-primary"  >Apply</button>
+        </div>
+      </form>
+    </div>
+   
+  </div>
+</div>
+
+
+
+</div>

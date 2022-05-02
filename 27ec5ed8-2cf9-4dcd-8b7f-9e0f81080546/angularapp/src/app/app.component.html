@@ -1,0 +1,48 @@
+<nav class="navbar py-3 navbar-dark"  >
+  <div class="container-fluid">
+
+   
+    <!-- <i class="fa-solid fa-person-breastfeeding  fa-3x"> </i> -->
+
+    <div class="navbar-brand" >
+      Nanny Care
+    </div>
+   
+    <!-- <a href="/" class="navbar-brand" id="nav-icon">
+      <img style="width: 70px;" src="" alt="">
+     
+    </a> -->
+    
+    <form class="d-flex">
+        <button class="btn btn-lg btn-outline-light" *ngIf=!isLoggedin routerLink="login">Login</button>
+        <button class="btn btn-lg btn-outline-light" *ngIf=!isLoggedin routerLink="signup">Signup</button>
+        <button class=" btns btn btn-lg btn-outline-light"   *ngIf= "isLoggedin && isAdmin && !isCustomer && !isEmployee" routerLink="home" > Customer Home</button>
+        <button class=" btns btn btn-lg btn-outline-light"   *ngIf= "isLoggedin && isAdmin && !isCustomer && !isEmployee" routerLink="admin" >Home</button>
+        <button class="btn btn-lg btn-outline-light"  *ngIf="isLoggedin && isAdmin && !isCustomer && !isEmployee" routerLink="customerapplication" >Add Job</button>
+        <button class="btn btn-lg btn-outline-light"   *ngIf="isLoggedin && isAdmin && !isCustomer && !isEmployee" routerLink="jobdetails" >Job Seeker Home</button>
+        
+        <button class="btn btn-lg btn-outline-light"   *ngIf= "isLoggedin && isCustomer" routerLink="home" >Home</button>
+
+        <button class="btn btn-lg btn-outline-light"  *ngIf="isLoggedin && isCustomer" routerLink="customerapplication" >Add Job</button>
+
+        <button class="btn btn-lg btn-outline-light"  *ngIf="isLoggedin && isCustomer" routerLink="appliedcandidates">Applied Candidates</button>
+
+
+        <button class="btn btn-lg btn-outline-light"   *ngIf="isLoggedin && isEmployee" routerLink="jobdetails" >Home</button>
+
+        <button class="btn btn-lg btn-outline-light"   *ngIf="isLoggedin && isEmployee " routerLink="appliedjobs" >Applied Jobs</button>
+
+        
+
+        <button class="btn btn-lg btn-outline-light" (click)="logout()" *ngIf=isLoggedin routerLink="login">Logout</button>
+
+        <!-- <button class="btn btn-outline-light" routerLink="signup" *ngIf=!isLoggedin>signup</button> -->
+    </form>
+    </div>
+</nav>
+
+<body class="wrapper"></body>
+    
+
+
+<router-outlet></router-outlet>
