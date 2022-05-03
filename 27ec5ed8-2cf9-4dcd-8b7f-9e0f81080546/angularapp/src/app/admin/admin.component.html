@@ -1,0 +1,119 @@
+<form
+*ngIf="isLoggedIn"
+
+
+>
+<div class="container" id="contain">
+  <div class="row">
+    <ng-container *ngFor="let i of jobseekers">
+    <div class="card text-center  col-md-3"  style="width: 25rem;">
+    <ul class="list-group list-group-flush">
+
+      <li class="list-group-item"><b> Name</b> <br>
+        {{i.name}}
+    </li>
+      <li class="list-group-item"><b>Age</b> <br>
+        {{i.age}}
+    </li>
+        <li class="list-group-item"><b>Date Of Birth</b> <br>
+          {{i.dob}}
+        </li>
+      <li class="list-group-item"><b>Phone Number</b> <br>
+        {{i.phone_number}}
+            </li>
+        <li class="list-group-item"><b>Address</b> <br>
+          {{i.address}}
+    </li>
+      <li class="list-group-item"><b>Nationality</b> <br>
+        {{i.nationality}}
+    </li>
+    <li class="list-group-item"><b>Experience</b> <br>
+      {{i.experience}}
+    </li>
+    <li class="list-group-item"><b>verification_id</b> <br>
+      {{i.verification_id}}
+    </li>
+   
+
+
+    </ul>
+    <div class="card-body">
+        
+
+        <button id="edit" (click)="getjobseekerId(i)"  data-bs-toggle="modal" data-bs-target="#exampleModal">
+          <i class="fa-solid fa-pen-to-square fa-1x"></i>
+      </button>
+
+      <button id="delete" (click)="_deleteJobseeker(i.id)">
+        <i class="fa-solid fa-trash-can"></i>
+      </button>
+    </div>
+</div>
+</ng-container>
+</div>
+</div>
+
+
+<!-- update form -->
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form #editform="ngForm" (ngSubmit)="onSubmit()">
+          <div class="form-group">
+            <label for="exampleInputEmail1">Name</label>
+            <input type="text" [(ngModel)]="application.name" [ngModelOptions]="{standalone: true}" class="form-control" id="exampleInputjobId"  placeholder="Enter job description" >
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1">Age</label>
+            <input type="number" [(ngModel)]="application.age" [ngModelOptions]="{standalone: true}" class="form-control" id="exampleInputDescription"  placeholder="Enter job description">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1">dob</label>
+            <input type="date" [(ngModel)]="application.dob" [ngModelOptions]="{standalone: true}" class="form-control" id="exampleInputExperience"  placeholder="Enter experience">
+          
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1">phone number</label>
+            <input type="tel" [(ngModel)]="application.phone_number" [ngModelOptions]="{standalone: true}" class="form-control" id="exampleInputWage"  placeholder="Enter Wage per day">
+          
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1">Nationality</label>
+            <input type="text" [(ngModel)]="application.nationality" [ngModelOptions]="{standalone: true}" class="form-control" id="exampleInputFromDate" placeholder="Enter from date">
+      
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">Varification ID</label>
+            <input type="number" [(ngModel)]="application.verification_id" [ngModelOptions]="{standalone: true}" class="form-control" id="exampleInputToDate" placeholder="enter to date">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">Experience</label>
+            <input type="text" [(ngModel)]="application.experience" [ngModelOptions]="{standalone: true}" class="form-control" id="exampleInputAddress" placeholder="Enter Address">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">Address</label>
+            <input type="text" [(ngModel)]="application.address" [ngModelOptions]="{standalone: true}" class="form-control" id="exampleInputPhoneNumber" placeholder="Enter phone number">
+          </div>
+          <!-- <button  type="submit" class="btn btn-primary">Submit</button> -->
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="submit"  class="btn btn-primary"  >Save changes</button>
+          </div>
+        </form>
+      </div>
+     
+    </div>
+  </div>
+
+  
+
+</div>
+
+</form>

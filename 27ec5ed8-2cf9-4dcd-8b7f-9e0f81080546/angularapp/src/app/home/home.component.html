@@ -1,0 +1,120 @@
+<form
+*ngIf="isLoggedIn"
+>
+  <div class="container" id="contain">
+    <div class="row">
+             <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
+            <ng-container *ngFor="let jb of jobCard">
+                <div class="card text-center  col-md-3"  style="width: 25rem;">
+                
+                
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item"><b>ID</b> <br>
+                    {{jb.id}}
+                </li>
+                  <li class="list-group-item"><b>Job Description</b> <br>
+                    {{jb.job_description}}
+                </li>
+                  <li class="list-group-item"><b>Experience</b> <br>
+                    {{jb.experience}}
+                </li>
+                    <li class="list-group-item"><b>Wages</b> <br>
+                       {{jb. wage_per_day}}
+                    </li>
+                  <li class="list-group-item"><b>From date:</b> {{jb.from_date}} <br>
+                        <b>To date:</b> {{jb.to_date}}</li>
+                    <li class="list-group-item"><b>Address</b> <br>
+                      {{jb. address}}
+                </li>
+                  <li class="list-group-item"><b>Phone number</b> <br>
+                    {{jb.phone_number}}
+                </li>
+                </ul>
+                <div class="card-body">
+                 <button class="btn">
+                    <a href="#" class="card-link">{{jb.status}}</a>
+                 </button>
+  
+                 
+                    <button id="edit" (click)="getjobId(jb)"  data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        <i class="fa-solid fa-pen-to-square fa-1x"></i>
+                    </button>
+  
+                    <button id="delete" (click)="_deleteJob(jb.id)">
+                      <i class="fa-solid fa-trash-can"></i>
+                    </button>
+            
+                </div>
+            </div>
+  
+            
+            </ng-container>
+  
+            
+           
+     </div>
+    </div>
+  
+    <!-- update form -->
+  
+  
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form #editform="ngForm" (ngSubmit)="onSubmit()">
+              <div class="form-group">
+                <label for="exampleInputEmail1">job Id</label>
+                <input type="number" [(ngModel)]="application.id" [ngModelOptions]="{standalone: true}" class="form-control" id="exampleInputjobId"  placeholder="Enter job description" disabled="true">
+              </div>
+              <div class="form-group">
+                <label for="exampleInputEmail1">Enter job description</label>
+                <input type="text" [(ngModel)]="application.job_description" [ngModelOptions]="{standalone: true}" class="form-control" id="exampleInputDescription"  placeholder="Enter job description">
+              </div>
+              <div class="form-group">
+                <label for="exampleInputEmail1">Enter Experience</label>
+                <input type="text" [(ngModel)]="application.experience" [ngModelOptions]="{standalone: true}" class="form-control" id="exampleInputExperience"  placeholder="Enter experience">
+              
+              </div>
+              <div class="form-group">
+                <label for="exampleInputEmail1">Enter Wage</label>
+                <input type="number" [(ngModel)]="application.wage_per_day" [ngModelOptions]="{standalone: true}" class="form-control" id="exampleInputWage"  placeholder="Enter Wage per day">
+              
+              </div>
+              <div class="form-group">
+                <label for="exampleInputEmail1">Enter from date</label>
+                <input type="date" [(ngModel)]="application.from_date" [ngModelOptions]="{standalone: true}" class="form-control" id="exampleInputFromDate" placeholder="Enter from date">
+          
+              </div>
+              <div class="form-group">
+                <label for="exampleInputPassword1">Enter to date</label>
+                <input type="date" [(ngModel)]="application.to_date" [ngModelOptions]="{standalone: true}" class="form-control" id="exampleInputToDate" placeholder="enter to date">
+              </div>
+              <div class="form-group">
+                <label for="exampleInputPassword1">Enter address</label>
+                <input type="text" [(ngModel)]="application.address" [ngModelOptions]="{standalone: true}" class="form-control" id="exampleInputAddress" placeholder="Enter Address">
+              </div>
+              <div class="form-group">
+                <label for="exampleInputPassword1">Enter phone number</label>
+                <input type="text" [(ngModel)]="application. phone_number" [ngModelOptions]="{standalone: true}" class="form-control" id="exampleInputPhoneNumber" placeholder="Enter phone number">
+              </div>
+              <!-- <button  type="submit" class="btn btn-primary">Submit</button> -->
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="submit"  class="btn btn-primary"  >Save changes</button>
+              </div>
+            </form>
+          </div>
+         
+        </div>
+      </div>
+  
+      
+   
+    </div>
+
+</form>
